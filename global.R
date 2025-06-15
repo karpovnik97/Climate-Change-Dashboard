@@ -305,23 +305,25 @@ Mean_Air <- na.omit(Air_Pollution) %>% group_by(Year) %>% summarise(Mean=mean(Va
 
 # Country with highest average pollution 
 # 
-# AP_First <- 
-#   na.omit(Air_Pollution) %>%
-#   group_by(Country) %>% 
-#   summarise(Mean=mean(Value)) %>%
-#   arrange(desc(Mean)) %>%
-#   select(Country) %>%
-#   head(1)
+AP_First <-
+  na.omit(Air_Pollution) %>%
+  group_by(Country) %>%
+  summarise(Mean=mean(Value)) %>%
+  arrange(desc(Mean)) %>%
+  select(Country) 
+
+AP_First <- AP_First[1,]
 
 # Country with lowest average pollution 
 
-# AP_Lowest <- 
-#   na.omit(Air_Pollution) %>%
-#   group_by(Country) %>% 
-#   summarise(Mean=mean(Value)) %>%
-#   arrange(desc(Mean)) %>%
-#   select(Country) %>%
-#   tail(1)
+AP_Lowest <-
+  na.omit(Air_Pollution) %>%
+  group_by(Country) %>%
+  summarise(Mean=mean(Value)) %>%
+  arrange(desc(Mean)) %>%
+  select(Country) 
+
+AP_Lowest <- AP_Lowest[1,]
 
 # Countries with high pollution
 
@@ -380,9 +382,19 @@ Temperature_Change$Year <- as.numeric(Temperature_Change$Year)
 
 # temperature tends to increase in both Georgia and Albania
 
+# Country with highest mean temperature raise 
 
+TC_top_1 <- Temperature_Change %>% group_by(Country) %>% 
+  summarise(mean=mean(Value)) %>% arrange(desc(mean)) %>% select(Country)
 
+TC_top_1 <- TC_top_1[1,]
 
+# Country with highest mean temperature raise 
+
+TC_bot_1 <- Temperature_Change %>% group_by(Country) %>% 
+  summarise(mean=mean(Value)) %>% arrange(mean) %>% select(Country)
+
+TC_bot_1 <- TC_bot_1[1,]
 
 # n <- 1
 # clist <- unique(Temperature_Change$Country)
@@ -583,4 +595,4 @@ info2 <- length(Air_Pollution)+length(Species_USA)+length(Disasters)+length(Sea_
 info3 <- length(Species_USA)*count(Species_USA)+length(Air_Pollution)*count(Air_Pollution)+length(Disasters)*count(Disasters)+length(Sea_Levels)*count(Sea_Levels)+length(Temperature_Change)*length(Temperature_Change)+length(Threatened_Species)*count(Threatened_Species)+length(Forest_Area)*count(Forest_Area)+count(CO2_Concentrations)*length(CO2_Concentrations)+count(CO2_Emissions)*length(CO2_Emissions)
 
 #removing temporary data
-rm(all_names, Measure,offsets, Date, Value,temp,Year,`Threat Group`,zip_files,csv_entry,csv_filepath,iso2_to_full,tempfile,temp_file,response)
+rm(first_year,last_year,all_names, Measure,offsets, Date, Value,temp,Year,`Threat Group`,zip_files,csv_entry,csv_filepath,iso2_to_full,tempfile,temp_file,response)

@@ -374,14 +374,13 @@ server <- function(input, output) {
         geom_line(color="#69b3a2", size=2) +
         geom_point(size=3, color="#69b3a2") +
         theme_bw()+
-        ggtitle(paste("How is",paste(input$FC_I) ,"changing overtime globally?"))+
+        ggtitle(paste("How is",paste(input$FC_I) ,"changing overtime globally?")) +
         # Ensuring correct number of years is displayed
-        scale_x_continuous (breaks = c(1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 
-                                       2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
-                                       2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
-                                       2016, 2017, 2018, 2019, 2020),limits = c(1992,2020))+
-        
-        scale_y_continuous(limits = c(4050000,4250000)) }
+        scale_x_continuous (limits = c(1992,2020), 
+                            breaks = seq(1992,2020,4))+
+
+         scale_y_continuous(limits = c(4050000,4250000)) 
+      }
     
     else if (input$FC_I=="Share of forest area") { # this plot shows trend in percentage of land that forest occupies
       
@@ -404,9 +403,9 @@ server <- function(input, output) {
         aes(x = Year, y = reorder(Value,Value), colour = Country, group = Country,text = paste("Year:", Year, "<br>County:", Country, "<br>Value:", Value)) +
         geom_line(linewidth=1.1)+
         geom_point(size=1.5)+
-        labs(y="Area")+
+        labs(y="Area") +
         # Ensuring plot looks nice
-        scale_x_continuous (breaks = c(1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020),limits = c(1992,2020))+
+        scale_x_continuous(breaks = seq(1992,2020,2),limits = c(1992,2020))+
         theme_bw()+
         ggtitle(paste(input$FC_I , "Trend in", paste(input$FC_C2, collapse = ", ")))+
         labs(y=paste(input$FC_I))+
@@ -446,21 +445,19 @@ server <- function(input, output) {
   
   # The following valuebox shows which country is most affected by temperature change
   output$TC_top_1st <- renderValueBox({
-    
     valueBox(
       print(paste(TC_top_1)),"Highest Temperature change", icon = icon("square-up-right"),
       color = "red"
     )
-  }) # Andorra
+  }) 
   
   # The following valuebox shows which country is least affected by temperature change
   output$TC_bot_1st <- renderValueBox({
-    
     valueBox(
       print(paste(TC_bot_1)),"Lowest Temperature change", icon = icon("square-up-left"),
       color = "green"
     )
-  }) # Yemen
+  }) 
   
   # Overall the trens in temperature is alarming in most of the countries 
   

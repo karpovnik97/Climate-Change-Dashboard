@@ -213,7 +213,7 @@ ui <- dashboardPage(
                       numericInput(
                         width = 250,
                         inputId = "APslider",
-                        label = "Select Number of Regions to Display:",
+                        label = "Select Number of Countries to Display:",
                         min = 1,
                         max = 209,
                         value = 3,
@@ -262,7 +262,7 @@ ui <- dashboardPage(
                            plotlyOutput("Temperature_Change2")
                          )
                   ),
-                  box(width = 6,
+                  box(width = 12,
                       valueBoxOutput("TC_top_1st"),
                       valueBoxOutput("TC_bot_1st")
                   )
