@@ -1,3 +1,5 @@
+library(DT)
+
 server <- function(input, output) {
   
   # Rendering different controls for tabs
@@ -47,7 +49,7 @@ server <- function(input, output) {
       ggtitle("What threatens species & their habitats?")+
       coord_flip()+
       scale_fill_viridis(option = "D",discrete = TRUE)+
-      theme(  # here i used custom theme to center the plot title and make it nicer
+      theme(  # custom theme to center the plot title and make it nicer
         panel.background = element_rect(fill = "white"),
         plot.title = element_text(hjust = 0.5),
         axis.ticks = element_blank(),
@@ -347,13 +349,13 @@ server <- function(input, output) {
   }) # Here boxplot comes handy to compare trend in different countries till this point year - 2022
   
   # Table displaying in which countries most disasters occur
-  output$DisastersTable <- renderDataTable( DTable )
+  output$DisastersTable <- renderDT( DTable )
   
   # United States, China and India have recorded the most natural disasters
   
   
   # table displaying how frequent each disaster is 
-  output$DisastersTable2 <- renderDataTable(DTable2)
+  output$DisastersTable2 <- renderDT(DTable2)
   
   # The most frequent natural disaster is Flood
   

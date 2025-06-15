@@ -2,8 +2,9 @@
 
 library(shiny)
 library(shinydashboard)
+library(shinydashboardPlus)
+library(plotly)
 
-source("data.R")
 
 ### Building user interface 
 
@@ -186,9 +187,10 @@ ui <- dashboardPage(
                          ),
                          tabPanel("Tables",
                                   h3("Which disaster occurs most frequently?"),
-                                  dataTableOutput('DisastersTable2'),
+                                  DTOutput('DisastersTable2'),
+                                  br(),br(),
                                   h3("Countries with the most disasters recorded"),
-                                  dataTableOutput('DisastersTable')
+                                  DTOutput('DisastersTable')
                          )
                   )
                 )
