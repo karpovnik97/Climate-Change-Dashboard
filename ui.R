@@ -71,7 +71,7 @@ ui <- dashboardPage(
                     h4(icon("otter"), "What factors endanger species and their habitats? Is climate change a main factor? How many species are Endangered?"),
                     h4(icon("water"), "Has mean sea levels increased over time?", "To what extent are sea levels rising in different regions?"),
                     h4(icon("fire"), "Are climate related disasters more common nowadays?", "How disasters are distributed in different countries?", "Which countries have most climate-related catastrophes?", "What climate-related disasters are most common?"),
-                    h4(icon("smog"), "Is air pollution getting worse?", "IN which countries is pollution the most severe?"),
+                    h4(icon("smog"), "Is air pollution getting worse?", "In which countries is pollution the most severe?"),
                     h4(icon("tree"), "Has forest cover decreased on all continents? What’s the overall trend?"),
                     h4(icon("sun"), "How has global/local average temperature changed over time?"),
                     h4(icon("cloud"), "Is CO2 concentration increasing globally?", "What is trend in superpowers?")
